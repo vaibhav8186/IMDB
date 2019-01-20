@@ -1,0 +1,54 @@
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><h3><%= @actor.name %></h3></h5>
+        <p class="card-text"><h5><b>Description:</b></h5><%= @actor.description %></p>
+              <%= link_to "Edit" ,edit_actor_path(@actor), class: "btn btn-success" %>
+<%= link_to "Delete", actor_path(@actor), class: "btn btn-danger", method: :delete, data:{confirm: 'are yo sure?'} %>      
+      
+      </div>
+    </div>
+  </div>
+ <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+   <!--@actor.movies.each do |movie| -->
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+       <th scope="col">Movies</th>
+    </tr>
+  </thead>
+  <tbody>
+     <% @actor.movies.each do |movie| %> 
+    <tr>
+      <td><%= link_to movie.name %></td>
+      </tr>
+      <% end %>
+ </tbody>
+</table>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<br><br>
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Add Movies
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <% @actors_movie.each do|movie| %>
+      <li><a href="#"><%= link_to movie.name, addactormovie_path(movie: movie.id, actor: @actor.id) %></a></li>
+      <% end %>
+    </ul>
+  </div>
+<br><br>
+<%= link_to "Back" ,root_path, class: "btn btn-success" %>
+
+

@@ -1,0 +1,6 @@
+<%= simple_form_for @actor do |f| %>
+  <%= f.input :name, label: "Actor Name:" %>
+  <%= f.input :description %>
+  <%= f.input :actor_dob, as: :date %>
+  <%= f.button :submit, class: "btn btn-success" %>
+<% end %>

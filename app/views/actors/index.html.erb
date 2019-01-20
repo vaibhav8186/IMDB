@@ -1,0 +1,29 @@
+<h1>All Acotrs</h1>
+<% if current_user %>
+    <p><%= link_to "New Movies", new_actor_path ,class: "btn btn-primary" %></p>
+<% else %>
+  <%= link_to "Add New Actor", user_session_path,class: "btn btn-primary" %>
+<% end %>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Number of Movies</th>
+     </tr>
+  </thead>
+  <tbody>
+    <% i = 0 %> 
+  	<% @actors.each do |actor| %> 	
+    <tr>
+      <% i += 1 %>
+   	  <th scope="row"><%= i %></th>
+      <td><h5><%= link_to actor.name ,actor_path(actor)%></h5></td>
+      <td><h5><%= actor.movies.count%></h5></td>
+      <td><%= link_to "Edit" ,edit_actor_path(actor), class: "btn btn-primary" %></td>
+      <td><%= link_to "Delete", actor_path(actor), class: "btn btn-danger", method: :delete, data:{confirm: 'are yo sure?'} %> </td>
+    </tr> 
+    <% end %>
+  </tbody>
+</table>
+<%= link_to "Back" ,root_path, class: "btn btn-primary" %>
