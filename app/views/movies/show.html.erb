@@ -1,0 +1,39 @@
+
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><h3><%= @movie.name %></h3></h5>
+        <h5 class="card-title">Rating:<%= @movie.rating %></h5>
+        <h5 class="card-title">Release Date:<%= @movie.release %></h5>
+        <p class="card-text"><h5><b>Description:</b></h5><%= @movie.description %></p>
+              <%= link_to "Edit" ,edit_movie_path(@movie), class: "btn btn-success" %>
+<%= link_to "Delete", movie_path(@movie), class: "btn btn-danger", method: :delete, data:{confirm: 'are yo sure?'} %>      
+       </div>
+    </div>
+  </div>
+ <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <!--@actor.movies.each do |movie| -->
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+       <th scope="col">Movies</th>
+    </tr>
+  </thead>
+  <tbody>
+     <% @movie.actors.each do |actor| %> 
+    <tr>
+      <td><h4><%= link_to actor.name ,actor_path(actor)%></h4></td>
+      </tr>
+      <% end %>
+ </tbody>
+</table>
+      </div>
+    </div>
+  </div>
+  <br><br>
+<%= link_to "Back" ,root_path, class: "btn btn-success" %>
+
+
