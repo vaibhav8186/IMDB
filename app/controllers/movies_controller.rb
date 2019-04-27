@@ -4,13 +4,14 @@
 class MoviesController < ApplicationController
   before_action :find_movie, only: %i[show edit update destroy]
   before_action :authenticate_user!, except: %i[index allmovies]
-  def index; end
+  def index
+   end
 
   def addactormovie
     @act_id = params[:actor]
     @mov_id = params[:movie]
     @actor = Actor.find(@act_id)
-    a = ActorsMovie.new(act_id: @act_id, movie_id: @mov_id)
+    a = ActorsMovie.new(actor_id: @act_id, movie_id: @mov_id)
     # a.actor_id = @act_id
     # a.movie_id = @mov_id
     a.save
