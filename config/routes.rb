@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   devise_for :users
 	resources :movies
 	resources :actors
-	
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 	get 'addactormovie', to: 'movies#addactormovie'
 	get 'allmovies', action: :allmovies, controller: 'movies'
 	get 'not_added_movies', action: :not_added_movies ,controller: 'actors'
