@@ -3,7 +3,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 	def praidp
 	end
 
@@ -14,8 +17,11 @@ class User < ApplicationRecord
 	end 
 
 
+<<<<<<< HEAD
 def test
 end
+=======
+>>>>>>> master
 
 
 
